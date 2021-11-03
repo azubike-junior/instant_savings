@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Footer() {
     return (
-       <div className="container container-fixed-lg footer">
+       <div className="container container-fixed-lg footer my-4">
         <div className="copyright sm-text-center">
             <p className="small no-margin pull-left sm-pull-reset">
                 <span className="">Copyright &copy; 2021 </span>
