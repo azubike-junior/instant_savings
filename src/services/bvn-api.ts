@@ -1,18 +1,93 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
-import {bvnValidationUrl} from '../utils/constant'
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { bvnValidationUrl, OtpAuth } from "../utils/constant";
+import axios from "axios";
+import { DataProps } from "../interfaces";
+import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 
-type Bvn = string
+interface initState {
+  bvn: string;
+  error: any;
+  loading: boolean;
+  error2: any;
+  data: DataProps;
+  isSuccessful: boolean;
+}
 
-export const bvnApi = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: bvnValidationUrl }),
-  tagTypes: ["Bvn"],
-  endpoints: (build) => ({
-    postBvn: build.mutation<Bvn, Partial<Bvn>>({
-      query: (body) => ({
-        url: "validateBVN",
-        method: "POST",
-        body,
-      }),
-    }),
-  }),
+const initialState: initState = {
+  bvn: "",
+  error: "",
+  loading: false,
+  error2: "",
+  data: <DataProps>{},
+  isSuccessful: false,
+};
+
+export interface justProp {
+  bvn: any;
+  history?: any;
+}
+
+// export const validateBvnApi = createApi({
+//   reducerPath: "validateBvn",
+//   baseQuery: fetchBaseQuery({
+//     baseUrl: `http://10.11.200.97/BvnValidationsApi/Validations/ValidateBvn`,
+//   }),
+
+//   endpoints: (builder) => ({
+//     validateBvn: builder.mutation({
+//       query: (bvn: any) => ({
+//         url: "",
+//         method: "POST",
+//         body: bvn
+//       }),
+//     }),
+//   }),
+// });
+
+// export const { useValidateBvnMutation } = validateBvnApi;
+
+export const addBvn = createAsyncThunk(
+  "addBvn",
+  async ({ bvn, history }: justProp, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(bvnValidationUrl, { bvn });
+      if (response.data.responseCode === "00") {
+        history.push(OtpAuth);
+        return response.data;
+      } else {
+        return rejectWithValue(response.data);
+      }
+    } catch (e: any) {
+      return rejectWithValue(e.response.data);
+    }
+  }
+);
+
+export const BvnSlice = createSlice({
+  name: "bvn",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(addBvn.rejected, (state, action) => {
+      state.error = action.error;
+      state.error2 = action.error.name;
+      state.loading = false;
+      state.isSuccessful = false;
+    });
+    builder.addCase(addBvn.fulfilled, (state, action) => {
+      state.loading = true;
+      state.data = action.payload;
+      state.loading = false;
+      state.isSuccessful = true;
+      state.error = "";
+    });
+    builder.addCase(addBvn.pending, (state, action) => {
+      state.loading = true;
+      state.error = action.payload;
+    });
+  },
 });
+
+// "22277557146
+
+export default BvnSlice.reducer;

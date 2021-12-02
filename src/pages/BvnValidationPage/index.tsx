@@ -1,8 +1,6 @@
 import React from "react";
-import Header from "../../components/Header";
-import BvnValidation from "../../components/BvnValidation";
-import Footer from "../../components/Footer";
-// import OtpAuth from '../../components/OtpAuth'
+import Header from "../../components/IsHeader";
+import BvnValidation from "../../components/IsBvnValidation";
 
 export default function BvnValidationPage() {
   return (
