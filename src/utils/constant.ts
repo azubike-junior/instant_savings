@@ -1,4 +1,4 @@
-export const BvnValidation = "/instant_savings/bvn_validation";
+export const BvnValidation = "/";
 export const OtpAuth = "/instant_savings/otp_auth";
 export const UserDataAuth = '/instant_savings/user_data_auth';
 

@@ -57,7 +57,7 @@ export default function UserDataAuth() {
       const _user = JSON.parse(localStorage.getItem("userData") || "{}");
       setUser(_user);
     }
-    const expiryTime = 50000;
+    const expiryTime = 130000;
     setTimeout(() => {
       localStorage.clear();
       history.push(BvnValidation);
@@ -152,9 +152,7 @@ export default function UserDataAuth() {
                               value={user?.bvn}
                               readOnly
                               label="bvn"
-                              onChange={(e) =>
-                                setValue(user?.bvn || "")
-                              }
+                              onChange={(e) => setValue(user?.bvn || "")}
                             />
                           </div>
                           <div className="form-group col-lg-6 col-md-6 col-sm-12 font-weight-700">
