@@ -6,7 +6,6 @@ import { addBvn } from "../../services/bvn-api";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import Loader from "./../Loader/index";
-import { OtpAuth } from "../../utils/constant";
 
 type Bvn = string;
 type DomError = string;
@@ -16,7 +15,7 @@ export default function BvnValidation() {
   const { error, loading } = useSelector(
     (state: RootState) => state.bvnReducer
   );
-  
+
   const history = useHistory();
 
   const [bvn, setBvn] = useState<Bvn>("");
@@ -37,11 +36,6 @@ export default function BvnValidation() {
     dispatch(addBvn({ bvn, history }));
     console.log(">>>bvn", bvn);
 
-    // validateBvn(bvn);
-
-    // if (data?.responseCode === "00") {
-    //   history.push(OtpAuth);
-    // }
     setDomError("");
   };
 
@@ -129,6 +123,9 @@ export default function BvnValidation() {
                             name="bvn"
                             placeholder="Enter your BVN"
                             required
+                            onInput={(e: React.ChangeEvent<HTMLInputElement>) =>
+                              (e.target.value = e.target.value.slice(0, 11))
+                            }
                             value={bvn}
                             onChange={(e) => setBvn(e.target.value)}
                             maxLength={11}

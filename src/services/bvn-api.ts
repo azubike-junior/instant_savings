@@ -27,24 +27,6 @@ export interface justProp {
   history?: any;
 }
 
-// export const validateBvnApi = createApi({
-//   reducerPath: "validateBvn",
-//   baseQuery: fetchBaseQuery({
-//     baseUrl: `http://10.11.200.97/BvnValidationsApi/Validations/ValidateBvn`,
-//   }),
-
-//   endpoints: (builder) => ({
-//     validateBvn: builder.mutation({
-//       query: (bvn: any) => ({
-//         url: "",
-//         method: "POST",
-//         body: bvn
-//       }),
-//     }),
-//   }),
-// });
-
-// export const { useValidateBvnMutation } = validateBvnApi;
 
 export const addBvn = createAsyncThunk(
   "addBvn",

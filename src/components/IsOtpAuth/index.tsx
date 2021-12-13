@@ -58,8 +58,7 @@ export default function OtpAuth() {
       phoneNumber: data?.phoneNumber1,
       bvn: data?.bvn,
       token: generatedOtp,
-      messageBody: `SunTrust Bank
-       OTP: ${generatedOtp}. Kindly use provided OTP to complete Account Opening Request. OTP Expires in 5 Minutes`,
+      messageBody: `${generatedOtp}. Kindly use provided OTP to complete Account Opening Request. OTP Expires in 5 Minutes`,
       expiry: now.getTime() + ttl,
     };
     const { expiry, token, ...rest } = userDetails;
@@ -143,6 +142,9 @@ export default function OtpAuth() {
                             placeholder="Enter the O.T.P code"
                             required
                             value={otp}
+                            onInput={(e: React.ChangeEvent<HTMLInputElement>) =>
+                              (e.target.value = e.target.value.slice(0, 6))
+                            }
                             onChange={(
                               e: React.ChangeEvent<HTMLInputElement>
                             ) => setOtp(e.target.value)}

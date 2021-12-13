@@ -45,8 +45,12 @@ export default function UserDataAuth() {
           : data?.residentialAddress?.substring(0, 29),
       identifyNumber: data?.nin,
     };
+    console.log(">>>>data", newData);
+
     openAccount(newData);
   };
+
+  // console.log(">>>>>>response", accountData);
 
   const clearStorage = () => {
     localStorage.clear();
@@ -57,7 +61,7 @@ export default function UserDataAuth() {
       const _user = JSON.parse(localStorage.getItem("userData") || "{}");
       setUser(_user);
     }
-    const expiryTime = 130000;
+    const expiryTime = 200000;
     setTimeout(() => {
       localStorage.clear();
       history.push(BvnValidation);

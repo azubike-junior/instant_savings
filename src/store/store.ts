@@ -6,15 +6,10 @@ import otpReducer from "./../services/otp-api";
 import { openAccountApi } from "./../services/open-account-api";
 
 export const store = configureStore({
-  //   reducer: {
-  //     [bvnService.reducerPath]: bvnService.reducer,
-  //   },
   reducer: {
     [openAccountApi.reducerPath]: openAccountApi.reducer,
-    // [validateBvnApi.reducerPath]: validateBvnApi.reducer,
     bvnReducer,
     otpReducer,
-    // openAccountReducer,
   },
   middleware: (gdm) => gdm().concat(openAccountApi.middleware),
   devTools: true,

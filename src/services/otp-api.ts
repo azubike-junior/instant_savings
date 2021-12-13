@@ -18,8 +18,6 @@ const initialState: OtpState = {
 export const sendSms = createAsyncThunk(
   "otpValidate",
   async (otp: OtpProps, { rejectWithValue }) => {
-    console.log(">>>>got here mhen");
-
     try {
       const response = await axios.post(otpValidationUrl, otp);
       return response.data;

@@ -13,6 +13,7 @@ interface InputProps {
   checked?: boolean;
   maxLength?: number;
   errors?: any;
+  onInput?: any;
 }
 
 export default function InputField({
@@ -26,6 +27,7 @@ export default function InputField({
   checked,
   maxLength,
   placeholder,
+  onInput
 }: InputProps) {
   return (
     <div
@@ -47,6 +49,7 @@ export default function InputField({
         required={required}
         onChange={onChange}
         checked={checked}
+        onInput={onInput}
       />
     </div>
   );
