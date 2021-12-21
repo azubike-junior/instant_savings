@@ -32,15 +32,11 @@ export default function OtpAuth() {
     const details = JSON.parse(userDetails);
     if (now.getTime() > details.expiry) {
       localStorage.removeItem("userDetails");
-      setOtpError(
-        "this Otp code has expired, click on the resend otp link below"
-      );
+      setOtpError("This OTP has expired, click on the resend OTP button below");
       return;
     }
     if (details.token !== otp) {
-      setOtpError(
-        "invalid otp input, please enter the valid otp to continue the process"
-      );
+      setOtpError("Invalid OTP, please enter valid OTP to continue");
       return;
     } else {
       setOtpError("");
@@ -117,13 +113,12 @@ export default function OtpAuth() {
                   <form id="signupformpageone" onSubmit={compareOtp}>
                     <input name="__RequestVerificationToken" type="hidden" />
                     <h2 className="pull-left" style={{ marginLeft: "20px" }}>
-                      O.T.P Validation
+                      OTP Validation
                     </h2>
                     <br />
                     <p style={{ marginLeft: "20px" }}>
                       <i>
-                        Enter the O.T.P code that was sent to your registered
-                        BVN phone number
+                        Enter the OTP sent to your registered BVN phone number
                       </i>
                     </p>
                     {otpError && (
@@ -136,10 +131,10 @@ export default function OtpAuth() {
                       <div className="row clearfix">
                         <div className="col-sm-12">
                           <InputField
-                            label="O.T.P"
+                            label="OTP"
                             type="number"
                             name="otp"
-                            placeholder="Enter the O.T.P code"
+                            placeholder="Enter OTP"
                             required
                             value={otp}
                             onInput={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -161,7 +156,7 @@ export default function OtpAuth() {
                           type="button"
                           style={{ border: "none" }}
                         >
-                          Resend O.T.P.
+                          Resend OTP
                         </button>
                       </label>
                     </div>
@@ -178,7 +173,7 @@ export default function OtpAuth() {
                             }}
                             type="submit"
                           >
-                            Validate O.T.P
+                            Validate OTP
                           </button>
 
                           <button

@@ -27,12 +27,12 @@ export interface justProp {
   history?: any;
 }
 
-
 export const addBvn = createAsyncThunk(
   "addBvn",
   async ({ bvn, history }: justProp, { rejectWithValue }) => {
     try {
       const response = await axios.post(bvnValidationUrl, { bvn });
+
       if (response.data.responseCode === "00") {
         history.push(OtpAuth);
         return response.data;

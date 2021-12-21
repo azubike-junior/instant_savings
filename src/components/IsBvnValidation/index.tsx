@@ -77,14 +77,14 @@ export default function BvnValidation() {
                   <form id="signupformpageone" onSubmit={submitBvn}>
                     <input name="__RequestVerificationToken" type="hidden" />
                     <h2 className="pull-left" style={{ marginLeft: "20px" }}>
-                      BVN INFORMATION
+                      BVN VALIDATION
                     </h2>
                     <br />
                     <p style={{ marginLeft: "20px" }}>
-                      <i>
+                      {/* <i>
                         If you have verified your data displayed below, click on
                         the "Create Account" button
-                      </i>
+                      </i> */}
                     </p>
                     {error?.name ? (
                       <span
@@ -99,8 +99,7 @@ export default function BvnValidation() {
                         className="flex"
                         style={{ marginLeft: "20px", color: "red" }}
                       >
-                        Invalid bvn input, please make sure your bvn digit is
-                        valid
+                        Invalid BVN
                       </span>
                     ) : (
                       ""

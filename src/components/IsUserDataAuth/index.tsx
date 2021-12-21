@@ -45,12 +45,9 @@ export default function UserDataAuth() {
           : data?.residentialAddress?.substring(0, 29),
       identifyNumber: data?.nin,
     };
-    console.log(">>>>data", newData);
 
     openAccount(newData);
   };
-
-  // console.log(">>>>>>response", accountData);
 
   const clearStorage = () => {
     localStorage.clear();
@@ -61,7 +58,7 @@ export default function UserDataAuth() {
       const _user = JSON.parse(localStorage.getItem("userData") || "{}");
       setUser(_user);
     }
-    const expiryTime = 200000;
+    const expiryTime = 1000000;
     setTimeout(() => {
       localStorage.clear();
       history.push(BvnValidation);
@@ -105,7 +102,7 @@ export default function UserDataAuth() {
             id="tab1"
           >
             {accountData?.responseCode === "00" ? (
-              <AccountOpened data={accountData?.accountNum} />
+              <AccountOpened data={accountData} user={data} />
             ) : (
               <div className="col-lg-12">
                 <div className="row">
@@ -129,7 +126,8 @@ export default function UserDataAuth() {
                                 className=""
                                 style={{ marginLeft: "2px", color: "red" }}
                               >
-                                Sorry, this BVN already exists
+                                Account could not be created because you already
+                                have an Account with this BVN.
                               </p>
                             )}
                             {error && (
@@ -137,13 +135,13 @@ export default function UserDataAuth() {
                                 className=""
                                 style={{ marginLeft: "2px", color: "red" }}
                               >
-                                Sorry, please something went wrong
+                                Sorry, please something went wrong.
                               </p>
                             )}
 
                             <i>
-                              If you have verified your data displayed below,
-                              click on the "Create Account" button
+                              Kindly verify the data below, click "Open Instant
+                              Account" to continue.
                             </i>
                           </div>
 

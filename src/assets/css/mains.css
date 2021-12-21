@@ -48,6 +48,17 @@
 (15993,3): run-time error CSS1062: Expected semicolon or closing curly-brace, found '0%'
  */
 /* This is a compiled file, you should be editing the file in the templates directory */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .pace {
     -webkit-pointer-events: none;
     pointer-events: none;
