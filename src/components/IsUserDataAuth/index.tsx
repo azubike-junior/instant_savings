@@ -46,6 +46,7 @@ export default function UserDataAuth() {
       identifyNumber: data?.nin,
     };
 
+    console.log(">>>>>>>newData", newData);
     openAccount(newData);
   };
 

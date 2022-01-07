@@ -37,7 +37,7 @@ export default function AcountOpenedPage({ data }: any) {
           SunTrust Bank.
         </h5>
         <h4 style={{ color: "#005d30", fontWeight: "bolder" }}>
-          <Link to={BvnValidation}>Go Back Home</Link>
+          <Link to={BvnValidation}>Go back Home</Link>
         </h4>
       </div>
     </div>
