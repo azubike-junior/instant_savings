@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { bvnValidationUrl, OtpAuth } from "../utils/constant";
 import axios from "axios";
 import { DataProps } from "../interfaces";
-import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 
 interface initState {
   bvn: string;
