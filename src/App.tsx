@@ -12,7 +12,7 @@ const NotFoundPage = lazy(() => import("./pages/UserDataAuthPage"));
 
 function App() {
   return (
-    <div>
+    <div className="font-poppins">
       <Router>
         <Switch>
           <Suspense fallback={Loader}>

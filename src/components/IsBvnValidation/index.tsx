@@ -30,12 +30,10 @@ export default function BvnValidation() {
   const submitBvn = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (bvn.length < 11) {
-      setDomError("bvn digit should not be lesser than 11");
+      setDomError("BVN should not be lesser than 11");
       return;
     }
     dispatch(addBvn({ bvn, history }));
-    console.log(">>>bvn", bvn);
-
     setDomError("");
   };
 
@@ -81,10 +79,6 @@ export default function BvnValidation() {
                     </h2>
                     <br />
                     <p style={{ marginLeft: "20px" }}>
-                      {/* <i>
-                        If you have verified your data displayed below, click on
-                        the "Create Account" button
-                      </i> */}
                     </p>
                     {error?.name ? (
                       <span

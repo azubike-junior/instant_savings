@@ -19,8 +19,6 @@ export default function AcountOpenedPage({ data }: any) {
     localStorage.clear();
   }, []);
 
-  console.log(">>>>>user", user);
-
   return (
     <div className="col-lg-12">
       <div className="text-center mt-10">
