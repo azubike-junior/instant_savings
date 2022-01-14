@@ -45,7 +45,7 @@ export default function UserDataAuth() {
           : data?.residentialAddress?.substring(0, 29),
       identifyNumber: data?.nin,
     };
-    
+    console.log(">>>>newData", newData);
     openAccount(newData);
   };
 

@@ -78,8 +78,7 @@ export default function BvnValidation() {
                       BVN VALIDATION
                     </h2>
                     <br />
-                    <p style={{ marginLeft: "20px" }}>
-                    </p>
+                    <p style={{ marginLeft: "20px" }}></p>
                     {error?.name ? (
                       <span
                         className="flex"
@@ -138,12 +137,12 @@ export default function BvnValidation() {
                         />
                         <label className="pl-1">
                           I agree with the{" "}
-                          <Link
-                            to="https://suntrustng.com/terms-of-use/"
+                          <a
+                            href="https://suntrustng.com/terms-of-use/"
                             target="_blank"
                           >
                             terms and conditions{" "}
-                          </Link>
+                          </a>
                         </label>
                       </div>
                     </div>
