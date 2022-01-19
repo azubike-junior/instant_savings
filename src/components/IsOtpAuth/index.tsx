@@ -7,7 +7,7 @@ import InputField from "../InputField";
 import { useSelector } from "react-redux";
 import { generateOtp } from "../../utils/utilities";
 import { useDispatch } from "react-redux";
-import { sendSms } from "./../../services/otp-api";
+import { sendMail, sendSms } from "./../../services/otp-api";
 import { BvnValidation } from "./../../utils/constant";
 import Loader from "../Loader";
 
@@ -63,8 +63,15 @@ export default function OtpAuth() {
       token: generatedOtp,
       expiry,
     };
+    const mailData = {
+      recipientName: data?.firstName,
+      message: `${generatedOtp}. Kindly use the provided OTP to complete Account Opening Request. OTP Expires in 5 Minutes`,
+      email: data?.email,
+      mailSubject: "OTP VALIDATION",
+    };
     localStorage.setItem("userDetails", JSON.stringify(tokenInfo));
     dispatch(sendSms(rest));
+    dispatch(sendMail(mailData));
   };
 
   const goBack = () => {

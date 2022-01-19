@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { OtpProps } from "./../interfaces";
-import { otpValidationUrl } from "./../utils/constant";
+import { otpValidationUrl, sendMailUrl } from "./../utils/constant";
 
 interface OtpState {
   otpDbError: any;
@@ -20,6 +20,18 @@ export const sendSms = createAsyncThunk(
   async (otp: OtpProps, { rejectWithValue }) => {
     try {
       const response = await axios.post(otpValidationUrl, otp);
+      return response.data;
+    } catch (e: any) {
+      return rejectWithValue(e.response.data);
+    }
+  }
+);
+
+export const sendMail = createAsyncThunk(
+  "sendMail",
+  async (data: any, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(sendMailUrl, data);
       return response.data;
     } catch (e: any) {
       return rejectWithValue(e.response.data);
@@ -47,6 +59,8 @@ export const OtpSlice = createSlice({
     });
   },
 });
+
+
 
 // "22277557146
 

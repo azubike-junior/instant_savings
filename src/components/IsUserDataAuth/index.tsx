@@ -34,7 +34,7 @@ export default function UserDataAuth() {
       maritalStatus: data?.maritalStatus,
       emailAddress: data?.email,
       gender: data?.gender,
-      telNumber: data?.phoneNumber1,
+      telNumber: data?.phoneNumber1, 
       address1:
         data?.residentialAddress === null
           ? ""
@@ -45,7 +45,6 @@ export default function UserDataAuth() {
           : data?.residentialAddress?.substring(0, 29),
       identifyNumber: data?.nin,
     };
-    console.log(">>>>newData", newData);
     openAccount(newData);
   };
 
