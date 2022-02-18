@@ -22,7 +22,7 @@ export const openAccountApi = createApi({
     openAccount: builder.mutation({
       query: (data: any) => ({
         url: "",
-        method: "POST",  
+        method: "POST",
         body: data,
       }),
     }),
